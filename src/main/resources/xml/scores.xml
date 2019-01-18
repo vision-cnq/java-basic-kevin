@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 声明内部DTD -->
+<!DOCTYPE scores [
+	<!ELEMENT scores (student+)>
+	<!ELEMENT student (name, course, score)>
+	<!ATTLIST student id CDATA #REQUIRED>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT course (#PCDATA)>
+	<!ELEMENT score (#PCDATA)>
+]>
+<scores>
+	<student id="1">
+		<name>王同</name>
+		<course>java</course>
+		<score>89</score>
+	</student>
+	<student id="2">
+		<name>李佳</name>
+		<course>sql</course>
+		<score>58</score>
+	</student>
+	<student id="3">
+		<name>张三</name>
+		<course>Oracle</course>
+		<score>40</score>
+	</student>
+</scores>

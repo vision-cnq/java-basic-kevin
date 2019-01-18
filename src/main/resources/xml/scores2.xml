@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入外部DTD文件 -->
+<!DOCTYPE scores SYSTEM "D:\java-project\JavaBase\src\main\resources\xml\scores.dtd">
+<scores>
+	<student id="1">
+		<name>王同</name>
+		<course>java</course>
+		<score>89</score>
+	</student>
+	<student id="2">
+		<name>李佳</name>
+		<course>sql</course>
+		<score>58</score>
+	</student>
+	<student id="3">
+		<name>张三</name>
+		<course>Oracle</course>
+		<score>40</score>
+	</student>
+</scores>

@@ -1,0 +1,2 @@
+简单的swing桌面，在view的LoginFrame中启动。
+注册后信息在resources中的user.txt文件中，登录时也是从其中取数据
