@@ -24,7 +24,7 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         /**
          * 异步读操作，参数的定义，第一个参数：接收缓冲区，用于异步从channel读取数据包
-         * 第二个参数：异步cahnnel携带的附件，通知回调的时候作为入参参数，这里是作为ReadCompletionHandler的入参
+         * 第二个参数：异步channel携带的附件，通知回调的时候作为入参参数，这里是作为ReadCompletionHandler的入参
          * 通知回调的业务handler，也就是数据从channel读到ByteBuffer完成后的回调handler，这里是ReadCompletionHandler
          */
         result.read(buffer,buffer,new ReadCompletionHandler(result));
