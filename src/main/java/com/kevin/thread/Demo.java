@@ -30,7 +30,62 @@ public class Demo {
      *          3.其他阻塞 -- 通过调用线程的sleep()或join()或发出了I/O请求时，线程会进入到阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。
      *      死亡状态（Dead）：线程执行完了或者因异常退出了run()方法，该线程结束生命周期。
      *
+     *  状态转换：
+     *      就绪状态转换为运行状态：当此线程得到处理器资源。
+     *      运行状态转换为就绪状态：当此线程主动调用yield()方法或在运行过程中失去处理器资源。
+     *      运行状态转换为死亡状态：当此线程线程执行体执行完毕或发生了异常。
+     *  此处需要特别注意的是：
+     *      当调用线程的yield()方法时，线程从运行状态转换为就绪状态，但接下来CPU调度就绪状态中的哪个线程具有一定的随机性，因此，可能会出现A线程调用了yield()方法后，接下来CPU仍然调度了A线程的情况。
      *
+     *  线程的优先级：
+     *      每一个 Java 线程都有一个优先级，这样有助于操作系统确定线程的调度顺序。
+     *      Java 线程的优先级是一个整数，其取值范围是 1 （Thread.MIN_PRIORITY ） - 10 （Thread.MAX_PRIORITY ）。
+     *      默认情况下，每一个线程都会分配一个优先级 NORM_PRIORITY（5）。
+     *      具有较高优先级的线程对程序更重要，并且应该在低优先级的线程之前分配处理器资源。但是，线程优先级不能保证线程执行的顺序，而且非常依赖于平台。
+     *
+     *  run与start的区别：
+     *      start方法是启动一个线程，而线程中的run方法来完成实际的操作。
+     *      直接调用run方法，就会将run方法当做一个普通函数来调用，并没有多开辟线程。
+     *      如果希望多线程异步执行，则需要调用start方法。
+     *
+     *  sleep与wait的区别：
+     *      1.两者处理的机制不同：
+     *          sleep方法：让线程暂停执行一段时间，时间一到自动恢复，并不会释放所占用的锁，
+     *          wait方法：会释放所占用的对象锁，等待其他线程调用notify方法才会再次醒来。
+     *      2.sleep是Thread的静态方法，是用来控制线程自身流程的，而wait是object的方法，用于进行线程通信。
+     *      3.两者使用的区域不同。sleep可以在任何地方使用，wait必须放在同步控制方法，或者语句块中执行。
+     *
+     *  synchronized、notify、wait的运用：
+     *      synchronized关键字有两种用法：
+     *          synchronized方法：public synchronized void function(){}
+     *          synchronized语句块：synchronized(object){}
+     *      当某个资源被synchronized所修饰，线程1线程2等多个线程在共同请求这个资源，
+     *      线程1先请求到，调用了对象的wait方法释放了对象的锁，此时线程2可以对这个对象进行访问，
+     *      在工作结束时可以调用对象的notify方法，唤醒等待队列中正在等待的线程，此时被唤醒的线程将会再一次拿到对象锁，
+     *      对对象进行操作。可以调用notifyAll方法，唤醒等待队列中的所有线程。
+     *      需要注意的是一个线程被唤醒不代表立即获取对象锁，必须等调用的线程对象的方法推出synchronized块释放对象锁后，被唤醒的进程才会获得对象锁。
+     *
+     *
+     *  更改线程的优先级：
+     *      public final void setPriority(int priority)
+     *  将该线程标记为守护线程或用户线程：
+     *      public final void setDaemon(boolean on)
+     *  中断线程：
+     *      public void interrupt()
+     *  暂停当前正在执行的线程对象，并执行其他线程：
+     *      public static void yield()
+     *  返回对当前正在执行的线程对象的引用：
+     *      public static Thread currentThread()
+     *  在指定的毫秒数内让当前正在执行的线程休眠（暂停执行）：
+     *      public static void sleep(long millisec)
+     *
+     *
+     *  使用6个案例对多线程进行掌握：
+     *      1.对同一个数量进行操作              （number_synchronize）
+     *      2.对同一个对象进行操作              （object_synchronize）
+     *      3.回调方法使用                      （callback_method）
+     *      4.线程同步，死锁问题                （deadlock）
+     *      5.线程通信与消费者生产者模式        （consume_produce）
      *
      *
      */
