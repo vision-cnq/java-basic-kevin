@@ -6,17 +6,17 @@ package com.kevin.reflect;
  * @description
  * @createDate 2019/6/6
  */
-public class Person {
+public class Person{
 
     String name;
-    private int age;
+    private Integer age;
 
     public Person() {
         super();
     }
 
     //包含一个带参的构造器和一个不带参的构造器
-    public Person(String name, int age) {
+    public Person(String name, Integer age) {
         super();
         this.name = name;
         this.age = age;
@@ -29,11 +29,26 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
-    public void setAge(int age) {
+
+    @AgeValidator(min=18,max=35)    // 该注解是自己自定义的，只能用在方法上
+    public void setAge(Integer age) {
         this.age = age;
     }
 
+    // 测试方法
+    private String testMethod(String name){
+        this.name = name;
+        return name + this.age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
