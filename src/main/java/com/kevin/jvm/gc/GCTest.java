@@ -6,6 +6,7 @@ package com.kevin.jvm.gc;
  * @description     演示垃圾回收机制的引用计数算法不能检测出循环引用。
  *      打印
  *      参数设置：-XX:+PrintGCDetails
+ *      查看内存的变化：-verbose:gc
  * @createDate 2019/7/12
  */
 public class GCTest {
