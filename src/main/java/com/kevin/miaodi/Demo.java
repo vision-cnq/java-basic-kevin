@@ -3,7 +3,7 @@ package com.kevin.miaodi;
 /**
  * @author caonanqing
  * @version 1.0
- * @description
+ * @description     秒滴短信服务
  * @createDate 2019/6/19
  */
 public class Demo {

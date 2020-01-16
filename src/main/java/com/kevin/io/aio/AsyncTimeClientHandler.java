@@ -83,9 +83,10 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
                             try {
                                 body = new String(bytes, "UTF-8");
                                 System.out.println("now body is: " + body);
-                                latch.countDown();
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
+                            } finally {
+                                latch.countDown();
                             }
                         }
 
@@ -95,9 +96,10 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
                             // 关闭client，释放channel相关联的一切资源
                             try {
                                 client.close();
-                                latch.countDown();
                             } catch (IOException e) {
                                 e.printStackTrace();
+                            } finally {
+                                latch.countDown();
                             }
                         }
                     });
@@ -114,9 +116,10 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
                 // 关闭client，释放channel相关联的一切资源
                 try {
                     client.close();
-                    latch.countDown();
                 } catch (IOException e) {
                     e.printStackTrace();
+                } finally {
+                    latch.countDown();
                 }
             }
         });
@@ -131,9 +134,10 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void,AsyncTimeC
     public void failed(Throwable exc, AsyncTimeClientHandler attachment) {
         try {
             client.close();
-            latch.countDown();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            latch.countDown();
         }
     }
 }

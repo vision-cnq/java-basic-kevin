@@ -12,7 +12,11 @@ import java.nio.channels.CompletionHandler;
  */
 public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSocketChannel, AsyncTimeServerHandler> {
 
-    // 成功的回调方法
+    /**
+     * 成功的回调方法
+     * @param result
+     * @param attachment
+     */
     @Override
     public void completed(AsynchronousSocketChannel result, AsyncTimeServerHandler attachment) {
         /**
@@ -30,7 +34,11 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
         result.read(buffer,buffer,new ReadCompletionHandler(result));
     }
 
-    // 失败的回调方法
+    /**
+     * 失败的回调方法
+     * @param exc
+     * @param attachment
+     */
     @Override
     public void failed(Throwable exc, AsyncTimeServerHandler attachment) {
         exc.printStackTrace();

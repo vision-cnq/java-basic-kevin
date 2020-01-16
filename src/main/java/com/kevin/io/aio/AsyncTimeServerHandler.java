@@ -50,7 +50,9 @@ public class AsyncTimeServerHandler implements Runnable{
 
     }
 
-    // 连接成功后的回调方法
+    /**
+     * 连接成功后的回调方法
+     */
     private void doAccept() {
         // 该方法是异步的接受来自通信的客户端的连接请求，连接成功后调用CompletionHandler的completed或者failed方法
         asynchronousServerSocketChannel.accept(this, new AcceptCompletionHandler());
