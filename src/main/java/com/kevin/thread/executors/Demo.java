@@ -1,4 +1,4 @@
-package com.kevin.thread.Executors;
+package com.kevin.thread.executors;
 
 /**
  * @author caonanqing

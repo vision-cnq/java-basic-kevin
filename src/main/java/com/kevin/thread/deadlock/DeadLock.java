@@ -1,5 +1,7 @@
 package com.kevin.thread.deadlock;
 
+import java.util.concurrent.locks.Lock;
+
 /**
  * @author caonanqing
  * @version 1.0

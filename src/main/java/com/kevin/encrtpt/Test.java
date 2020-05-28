@@ -33,6 +33,22 @@ public class Test {
         int xor_encodedNum = XORUtil.getInstance().code(xorNum, key);
         System.out.println("数字加密：" + xor_encodedNum);
         System.out.println("数字解密：" + XORUtil.getInstance().code(xor_encodedNum, key));
+
+
+
+    }
+
+    @org.junit.Test
+    public void encodedPasswd(){
+        System.out.println("-------------------------DES--------------------------");
+        String key = "kevin";
+        String res = "990922";
+        String passwd = DESUtil.getInstance().encode(res, key);
+        System.out.println("加密：" + passwd);
+        System.out.println("解密：" + DESUtil.getInstance().decode(passwd, key));
+
+
+
     }
 
 }

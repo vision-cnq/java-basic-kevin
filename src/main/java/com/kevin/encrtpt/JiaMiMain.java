@@ -18,7 +18,7 @@ public class JiaMiMain {
         System.out.println("加密后的结果是：" + result);
     }
 
-    /*
+    /**
      * 需求：写一个功能，把数据number实现加密。 两个明确： 返回值类型：String 做一个字符串的拼接。 参数列表：int number
      * 加5，取模10，前后首位置换
      */
